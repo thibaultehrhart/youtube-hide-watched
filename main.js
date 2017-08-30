@@ -46,9 +46,8 @@
     width: 24px;
 }
 
-.YT-HWV-BUTTON:focus,
 .YT-HWV-BUTTON:hover {
-    color: #FFF;
+    color: #000;
 }
 
 .YT-HWV-MENU {
@@ -95,7 +94,7 @@
     // ===========================================================
 
     var findWatchedElements = function () {
-        var watched = $('.ytd-thumbnail-overlay-resume-playback-renderer');
+        var watched = $('.resume-playback-progress-bar, .ytd-thumbnail-overlay-resume-playback-renderer');
 
         if (__DEV__) console.log(`[YT-HWV] Found ${watched.length} watched elements`);
 
@@ -146,11 +145,11 @@
             // So there, we need to hide the "ytd-video-renderer"
             var row, gridItem;
             if (window.location.href.indexOf('/feed/subscriptions') > 0) {
-                row = item.closest('#grid-container');
-                gridItem = item.closest('.ytd-grid-renderer');
+                row = item.closest('.ytd-item-section-renderer');
+                gridItem = item.closest('.yt-shelf-grid-item, ytd-grid-video-renderer');
             // Do not enable for trending page
             } else if (window.location.href.indexOf('/feed/trending') < 0) {
-                row = item.closest('ytd-video-renderer');
+                row = item.closest('.yt-shelf-grid-item, ytd-grid-video-renderer');
             }
 
             // If we're in grid view, we will hide the "grid" item,
